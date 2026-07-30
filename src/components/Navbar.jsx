@@ -4,7 +4,7 @@ import { Globe, ChevronDown, ChevronUp, Menu, X } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 const LANGUAGES = [
-  { code: "ro", label: "România" },
+  { code: "ro", label: "Română" },
   { code: "en", label: "English" },
   { code: "nl", label: "Deutsch" },
   { code: "fr", label: "Français" },
