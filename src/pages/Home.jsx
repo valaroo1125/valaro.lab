@@ -181,49 +181,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CTA BUTTON BETWEEN SECTIONS ── */}
-      <section
-        className="w-full px-6 md:px-12 py-16 md:py-20 flex justify-center"
-        style={{ background: "#050505" }}
-      >
-        <Link
-          to="/servicii"
-          className="group flex flex-col items-center gap-2 md:flex-row md:gap-4"
-        >
-          <div className="flex items-center gap-4">
-            <span
-              className="text-white font-black"
-              style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: "clamp(1.8rem, 4vw, 3.2rem)",
-                fontWeight: 900,
-                letterSpacing: "-0.01em",
-              }}
-            >
-              <span className="md:hidden">{t.servicesButton.split(" ").slice(0, -1).join(" ")}</span>
-              <span className="hidden md:inline">{t.servicesButton}</span>
-            </span>
-            <img
-              src="https://media.base44.com/images/public/6a341209f510fd74c1fecf1f/6e6935123_ChatGPTImageMay7202608_56_02PM.png"
-              alt=""
-              className="group-hover:translate-x-2 transition-transform duration-300"
-              style={{ width: "clamp(28px, 3.5vw, 44px)", height: "auto" }}
-            />
-          </div>
-          <span
-            className="text-white font-black md:hidden"
-            style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: "clamp(1.8rem, 4vw, 3.2rem)",
-              fontWeight: 900,
-              letterSpacing: "-0.01em",
-            }}
-          >
-            {t.servicesButton.split(" ").pop()}
-          </span>
-        </Link>
-      </section>
-
       {/* ── ABOUT SECTION ── */}
       <section
         id="about-section"
@@ -231,11 +188,11 @@ export default function Home() {
         style={{ background: "#050505" }}
         aria-label="About"
       >
-        <div className="flex flex-col md:flex-row items-center gap-14 md:gap-24 max-w-6xl mx-auto">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-14 md:gap-8 w-full">
           {/* Left: text */}
           <div className="flex-1">
             <h2
-              className="font-black leading-tight mb-10"
+              className="font-black leading-tight mb-10 text-center md:text-left"
               style={{
                 fontFamily: "'Inter', sans-serif",
                 fontSize: "clamp(2.5rem, 5vw, 4rem)",
@@ -270,11 +227,11 @@ export default function Home() {
             </p>
           </div>
           {/* Right: image */}
-          <div className="flex-1 w-full">
+          <div className="flex-1 md:flex-[1.4] w-full flex justify-end">
             <img
               src="https://media.base44.com/images/public/6a341209f510fd74c1fecf1f/e9ba15391_f915acfb8_Image.jpg"
               alt="About Valaro"
-              className="w-full object-cover max-h-[420px] md:max-h-[640px]"
+              className="w-full object-cover max-h-[420px] md:max-h-[840px]"
             />
           </div>
         </div>
