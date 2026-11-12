@@ -6,17 +6,30 @@ import { useLanguage } from "@/lib/LanguageContext";
 const LANGUAGES = [
   { code: "ro", label: "Română" },
   { code: "en", label: "English" },
-  { code: "nl", label: "Deutsch" },
-  { code: "fr", label: "Français" },
 ];
+
+const LOGO = "https://media.base44.com/images/public/6a341209f510fd74c1fecf1f/08758654d_ChatGPTImageMay7202608_56_02PM.png";
 
 export default function Navbar() {
   const { lang, setLang, t } = useLanguage();
   const [langOpen, setLangOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [barHidden, setBarHidden] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
+
+  // Mobile / tablet bar: hides while scrolling down, slides back in when scrolling up
+  useEffect(() => {
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setBarHidden(y > lastY && y > 60);
+      lastY = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     function handleClick(e) {
@@ -47,14 +60,14 @@ export default function Navbar() {
 
   return (
     <>
+      {/* Desktop navbar */}
       <nav
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-end px-8 md:px-14 h-16"
+        className="hidden lg:flex fixed top-0 left-0 right-0 z-50 items-center justify-end px-14 h-16"
         style={{ background: "transparent" }}
         role="navigation"
         aria-label="Main navigation"
       >
-        {/* Desktop nav links */}
-        <div className="hidden md:flex items-center gap-8 md:gap-10">
+        <div className="flex items-center gap-10">
           <Link to="/servicii" className={linkClass} style={linkStyle}>{t.nav.servicii}</Link>
           <Link to="/portfolio" className={linkClass} style={linkStyle}>{t.nav.portofoliu}</Link>
           <button onClick={handleDespreNoi} className={linkClass} style={linkStyle}>{t.nav.despreNoi}</button>
@@ -100,10 +113,28 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile hamburger */}
+      </nav>
+
+      {/* Mobile / tablet navbar — black bar, centred logo, menu on the right */}
+      <nav
+        data-navbar
+        className={`lg:hidden fixed top-0 left-0 right-0 z-50 h-20 flex items-center justify-end px-5 transition-transform duration-500 ease-out ${
+          barHidden ? "-translate-y-full" : "translate-y-0"
+        }`}
+        style={{ background: "#050505" }}
+        role="navigation"
+        aria-label="Main navigation"
+      >
+        <img
+          src={LOGO}
+          alt="Valaro"
+          className="absolute left-1/2 -translate-x-1/2 h-16 w-auto object-contain"
+          style={{ mixBlendMode: "screen" }}
+        />
+
         <button
           onClick={() => setMobileOpen((v) => !v)}
-          className="md:hidden text-white/80 hover:text-white transition-colors duration-300 focus:outline-2 focus:outline-white focus:outline-offset-4"
+          className="text-white/80 hover:text-white transition-colors duration-300 focus:outline-2 focus:outline-white focus:outline-offset-4"
           aria-label="Menu"
           aria-expanded={mobileOpen}
         >
@@ -114,7 +145,8 @@ export default function Navbar() {
       {/* Mobile menu — full screen overlay */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 z-[60] md:hidden flex flex-col"
+          data-navbar
+          className="fixed inset-0 z-[60] lg:hidden flex flex-col overflow-y-auto"
           style={{ background: "#000000" }}
         >
           {/* Close button top-right */}
@@ -144,8 +176,8 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Language selector at bottom */}
-          <div className="px-8 pb-12">
+          {/* Language selector at bottom — always reachable on mobile and tablet */}
+          <div className="shrink-0 px-8 pb-10 pt-6 border-t border-white/[0.08]">
             <div className="flex items-center gap-2 text-[16px] text-white/60 mb-4" style={{ fontFamily: "'Inter', sans-serif" }}>
               <Globe size={16} />
               <span>{currentLang.label}</span>
