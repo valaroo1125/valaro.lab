@@ -1,45 +1,13 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import ServiceGrid from "@/components/services/ServiceGrid";
 import { useLanguage } from "@/lib/LanguageContext";
 import Footer from "@/components/Footer";
 
-const SERVICE_IMAGES = [
-  "https://media.base44.com/images/public/6a341209f510fd74c1fecf1f/c34d13296_5ojAh1.jpg",
-  "https://media.base44.com/images/public/6a341209f510fd74c1fecf1f/436f5d494_Screenshot2026-07-06at200051.png",
-  "https://media.base44.com/images/public/6a341209f510fd74c1fecf1f/55db16058_Screenshot2026-04-30at190332.png",
-  "https://media.base44.com/images/public/6a341209f510fd74c1fecf1f/ffc4a7f24_Screenshot2026-07-06at200031.png",
-  "https://media.base44.com/images/public/6a341209f510fd74c1fecf1f/8fbfcdd32_Screenshot2026-04-30at181610.png",
-  "https://media.base44.com/images/public/6a341209f510fd74c1fecf1f/a1d24781c_Screenshot2026-06-18at202823.png",
-];
-
 export default function Home() {
   const { t } = useLanguage();
-  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
-  const [isReducedMotion, setIsReducedMotion] = useState(false);
-  const heroRef = useRef(null);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setIsReducedMotion(mq.matches);
-    const handler = (e) => setIsReducedMotion(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
-
-  const handleMouseMove = useCallback(
-    (e) => {
-      if (isReducedMotion) return;
-      setMousePos({ x: e.clientX, y: e.clientY });
-    },
-    [isReducedMotion]
-  );
-
-  const handleMouseLeave = useCallback(() => {
-    setMousePos({ x: -1000, y: -1000 });
-  }, []);
-
   const scrollToServices = () => {
     document.getElementById("services-section")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -48,45 +16,15 @@ export default function Home() {
     <div
       className="w-full"
       style={{ background: "#050505", minHeight: "100vh" }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
     >
       <Navbar />
 
       {/* ── HERO SECTION ── */}
       <section
-        ref={heroRef}
-        className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden"
+        className="relative w-full min-h-[70vh] flex flex-col items-center justify-center overflow-hidden"
         style={{ background: "#050505" }}
         aria-label="Hero"
       >
-        {/* Film grain */}
-        <div
-          className="absolute inset-0 pointer-events-none z-10 opacity-[0.025]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-            backgroundRepeat: "repeat",
-          }}
-          aria-hidden="true"
-        />
-
-        {/* Cursor glow */}
-        {!isReducedMotion && (
-          <div
-            className="absolute pointer-events-none z-20 rounded-full"
-            style={{
-              width: 500,
-              height: 500,
-              left: mousePos.x - 250,
-              top: mousePos.y - 250,
-              background:
-                "radial-gradient(circle, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0) 70%)",
-              transition: "left 0.12s ease-out, top 0.12s ease-out",
-            }}
-            aria-hidden="true"
-          />
-        )}
-
         {/* Hero content — centered */}
         <div className="relative z-30 flex flex-col items-center text-center px-6 max-w-3xl mx-auto">
           <h1
@@ -106,7 +44,7 @@ export default function Home() {
             style={{
               fontFamily: "'Inter', sans-serif",
               fontSize: "clamp(1rem, 1.5vw, 1.125rem)",
-              fontWeight: 400,
+              fontWeight: 700,
               maxWidth: "520px",
             }}
           >
@@ -135,50 +73,11 @@ export default function Home() {
       {/* ── SERVICES SECTION ── */}
       <section
         id="services-section"
-        className="w-full px-6 md:px-12"
+        className="w-full"
         style={{ background: "#050505" }}
         aria-label="Services"
       >
-        <div className="grid grid-cols-2 md:grid-cols-3" style={{ gap: "12px" }}>
-          {SERVICE_IMAGES.map((src, i) => (
-            <div
-              key={i}
-              className={`relative overflow-hidden ${["order-1","order-3","order-2","order-4","order-5","order-6"][i]} md:order-none`}
-              style={{ aspectRatio: "3/4" }}
-            >
-              <img
-                src={src}
-                alt={t.serviceCards[i]?.tag || ""}
-                className="w-full h-full object-cover"
-                style={i === 0 ? { objectPosition: "top" } : undefined}
-              />
-              {/* Translatable text overlay */}
-              <div className="absolute inset-0 flex flex-col justify-between p-6 pointer-events-none">
-                <div className="flex justify-start">
-                  <span
-                    className="font-semibold tracking-[0.06em] uppercase text-[0.55rem] md:text-[1.05rem]"
-                    style={{
-                      fontFamily: "'Inter', sans-serif",
-                      color: (i === 0 || i === 2) ? "rgba(0,0,0,0.75)" : "rgba(255,255,255,0.85)",
-                    }}
-                  >
-                    {t.serviceCards[i]?.tag}
-                  </span>
-                </div>
-                <p
-                  className="leading-snug text-[0.6rem] md:text-[1.15rem]"
-                  style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontWeight: 700,
-                    color: (i === 0 || i === 2) ? "#000000" : "#ffffff",
-                  }}
-                >
-                  {t.serviceCards[i]?.desc}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <ServiceGrid />
       </section>
 
       {/* ── ABOUT SECTION ── */}
