@@ -8,7 +8,7 @@ const LANGUAGES = [
   { code: "en", label: "English" },
 ];
 
-const LOGO = "https://media.base44.com/images/public/6a341209f510fd74c1fecf1f/08758654d_ChatGPTImageMay7202608_56_02PM.png";
+const LOGO = "https://media.base44.com/images/public/6a341209f510fd74c1fecf1f/bb65842d2_generated_ae739589.png";
 
 export default function Navbar() {
   const { lang, setLang, t } = useLanguage();
@@ -128,8 +128,7 @@ export default function Navbar() {
         <img
           src={LOGO}
           alt="Valaro"
-          className="absolute left-1/2 -translate-x-1/2 h-16 w-auto object-contain"
-          style={{ mixBlendMode: "screen" }}
+          className="absolute left-1/2 -translate-x-1/2 h-12 w-auto object-contain"
         />
 
         <button
