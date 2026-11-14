@@ -1,15 +1,30 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useLanguage } from "@/lib/LanguageContext";
 
 const BASE = "https://media.base44.com/images/public/6a341209f510fd74c1fecf1f";
 
-const TILES = [
+const EN_BASE = "https://base44.app/api/apps/6a341209f510fd74c1fecf1f/files/mp/public/6a341209f510fd74c1fecf1f";
+
+// English-only artwork for the 8 tiles (same order as the Romanian set)
+const EN_TILES = [
+  { src: `${EN_BASE}/2628a8767_en-serv-1.jpeg`, alt: "Creație & producție" },
+  { src: `${EN_BASE}/0d7f401c7_en-serv-2.jpeg`, alt: "Prezență online 360°" },
+  { src: `${EN_BASE}/673b17304_en-serv-3.jpeg`, alt: "Raportare transparentă" },
+  { src: `${EN_BASE}/e5afb28f3_en-serv-4.jpeg`, alt: "Website & landing page" },
+  { src: `${EN_BASE}/ed7a05ce2_en-serv-5.png`, alt: "Google & Meta Ads" },
+  { src: `${EN_BASE}/24c0b2ef9_en-serv-6.png`, alt: "Strategie de brand" },
+  { src: `${EN_BASE}/7bbef7227_en-serv-7.jpeg`, alt: "Campanii social media" },
+  { src: `${EN_BASE}/3e98c6d7d_en-serv-8.png`, alt: "Generare de lead-uri" },
+];
+
+const RO_TILES = [
   { src: `${BASE}/8209351bb_SERVICII6.png`, alt: "Creație & producție" },
   { src: `${BASE}/45f0ddff0_SERVICII7.png`, alt: "Prezență online 360°" },
   { src: `${BASE}/13cab3cfd_SERVICII8.png`, alt: "Raportare transparentă" },
   { src: `${BASE}/d9cab853f_SERVICII10.png`, alt: "Website & landing page" },
-  { src: `${BASE}/27355dd87_SERVICII11.png`, alt: "Google & Meta Ads" },
+  { src: "https://base44.app/api/apps/6a341209f510fd74c1fecf1f/files/mp/public/6a341209f510fd74c1fecf1f/947c26857_SERVICII11-ads.jpeg", alt: "Google & Meta Ads" },
   { src: `${BASE}/09fec4d8d_SERVICII1.png`, alt: "Strategie de brand" },
-  { src: `${BASE}/c202e48a4_SERVICII2.png`, alt: "Campanii social media" },
+  { src: "https://base44.app/api/apps/6a341209f510fd74c1fecf1f/files/mp/public/6a341209f510fd74c1fecf1f/7a23282d8_SERVICII2-social.jpeg", alt: "Campanii social media" },
   { src: `${BASE}/44fd5aaa8_SERVICII3.png`, alt: "Generare de lead-uri" },
 ];
 
@@ -17,6 +32,8 @@ const GUTTER = "clamp(12px, 1.8vw, 28px)";
 const SIDE = "clamp(16px, 7vw, 145px)";
 
 export default function ServiceGrid() {
+  const { lang } = useLanguage();
+  const TILES = lang === "en" ? EN_TILES : RO_TILES;
   const scrollerRef = useRef(null);
   const [progress, setProgress] = useState(0);
   const [autoScroll, setAutoScroll] = useState(true);
