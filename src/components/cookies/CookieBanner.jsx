@@ -1,7 +1,7 @@
 import React from "react";
 import { useLanguage } from "@/lib/LanguageContext";
 
-const GREEN = "#2da67a";
+const ACCENT = "#b83a52";
 
 export default function CookieBanner({ onAcceptAll, onRejectAll, onOpenSettings }) {
   const { t } = useLanguage();
@@ -20,7 +20,7 @@ export default function CookieBanner({ onAcceptAll, onRejectAll, onOpenSettings 
           style={{ color: "#1a1a1a", fontFamily: "'Inter', sans-serif" }}
         >
           {c.banner1}
-          <span className="underline cursor-pointer font-medium" style={{ color: GREEN }}>
+          <span className="underline cursor-pointer font-medium" style={{ color: ACCENT }}>
             {c.policy}
           </span>
           .
@@ -36,14 +36,14 @@ export default function CookieBanner({ onAcceptAll, onRejectAll, onOpenSettings 
           <button
             onClick={onRejectAll}
             className="flex-1 md:flex-none px-3.5 md:px-5 py-2 rounded text-[11px] md:text-[12px] font-semibold text-white transition-opacity hover:opacity-90 whitespace-nowrap"
-            style={{ background: GREEN, fontFamily: "'Inter', sans-serif" }}
+            style={{ background: ACCENT, fontFamily: "'Inter', sans-serif" }}
           >
             {c.rejectAll}
           </button>
           <button
             onClick={onAcceptAll}
             className="flex-1 md:flex-none px-3.5 md:px-5 py-2 rounded text-[11px] md:text-[12px] font-semibold text-white transition-opacity hover:opacity-90 whitespace-nowrap"
-            style={{ background: GREEN, fontFamily: "'Inter', sans-serif" }}
+            style={{ background: ACCENT, fontFamily: "'Inter', sans-serif" }}
           >
             {c.acceptAll}
           </button>
