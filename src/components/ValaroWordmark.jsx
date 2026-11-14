@@ -7,7 +7,7 @@ export default function ValaroWordmark() {
     <div
       className="flex flex-col items-center justify-center select-none"
       style={{
-        background: "linear-gradient(180deg, #6ee7a0 0%, #2d8a5a 55%, #064e3b 100%)",
+        background: "linear-gradient(180deg, #b83a52 0%, #8e2436 50%, #2e3b57 100%)",
         WebkitBackgroundClip: "text",
         backgroundClip: "text",
         WebkitTextFillColor: "transparent",
