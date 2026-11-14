@@ -61,7 +61,7 @@ export default function Services() {
             <div className="flex items-center gap-4">
               <span
                 className="w-2.5 h-2.5 rounded-[2px] flex-shrink-0 transition-colors duration-300"
-                style={{ background: i === activeIndex ? "#4ecfa8" : "rgba(255,255,255,0.15)" }}
+                style={{ background: i === activeIndex ? "#b83a52" : "rgba(255,255,255,0.15)" }}
               />
               <span
                 className={`text-[15px] md:text-[17px] transition-colors duration-300 ${
@@ -78,7 +78,7 @@ export default function Services() {
                   handleCereOferta(i);
                 }}
                 className="flex items-center gap-2 px-5 py-2.5 text-[13px] font-semibold text-white rounded transition-opacity hover:opacity-80"
-                style={{ background: "#2da67a" }}
+                style={{ background: "#8e2436" }}
               >
                 {s.cta}
                 <ArrowRight size={14} />
