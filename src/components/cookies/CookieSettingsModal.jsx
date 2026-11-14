@@ -2,7 +2,7 @@ import React from "react";
 import { X } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
-const GREEN = "#2da67a";
+const ACCENT = "#b83a52";
 
 export default function CookieSettingsModal({
   analytics,
@@ -42,7 +42,7 @@ export default function CookieSettingsModal({
           <span
             className="block text-[15px] font-black tracking-tight"
             style={{
-              background: "linear-gradient(90deg, #2da67a, #66ff99)",
+              background: "linear-gradient(90deg, #b83a52, #3f4e70)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -58,7 +58,7 @@ export default function CookieSettingsModal({
             {c.body1}
             <span
               className="underline font-medium cursor-pointer"
-              style={{ color: GREEN }}
+              style={{ color: ACCENT }}
             >
               {c.policy}
             </span>
@@ -68,7 +68,7 @@ export default function CookieSettingsModal({
           <button
             onClick={onAllowAll}
             className="w-full mt-5 py-3 rounded text-[14px] font-semibold text-white transition-opacity hover:opacity-90"
-            style={{ background: GREEN }}
+            style={{ background: ACCENT }}
           >
             {c.allowAll}
           </button>
@@ -84,7 +84,7 @@ export default function CookieSettingsModal({
             </div>
             <span
               className="text-[12px] font-semibold shrink-0"
-              style={{ color: GREEN }}
+              style={{ color: ACCENT }}
             >
               {c.alwaysActive}
             </span>
@@ -101,7 +101,7 @@ export default function CookieSettingsModal({
               aria-checked={analytics}
               aria-label={c.analytics}
               className="relative w-11 h-6 rounded-full shrink-0 transition-colors duration-200 focus:outline-2 focus:outline-offset-2"
-              style={{ background: analytics ? GREEN : "#d4d4d4" }}
+              style={{ background: analytics ? ACCENT : "#d4d4d4" }}
             >
               <span
                 className="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform duration-200"
@@ -114,14 +114,14 @@ export default function CookieSettingsModal({
             <button
               onClick={onRejectAll}
               className="flex-1 py-3 rounded text-[14px] font-semibold text-white transition-opacity hover:opacity-90"
-              style={{ background: GREEN }}
+              style={{ background: ACCENT }}
             >
               {c.rejectAll}
             </button>
             <button
               onClick={onConfirm}
               className="flex-1 py-3 rounded text-[14px] font-semibold text-white transition-opacity hover:opacity-90"
-              style={{ background: GREEN }}
+              style={{ background: ACCENT }}
             >
               {c.confirm}
             </button>
