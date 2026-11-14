@@ -2,7 +2,7 @@ import React, { useState, useCallback } from "react";
 import CookieBanner from "@/components/cookies/CookieBanner";
 import CookieSettingsModal from "@/components/cookies/CookieSettingsModal";
 
-const STORAGE_KEY = "valaro_cookie_consent";
+const STORAGE_KEY = "valaro_cookie_consent_v2";
 
 function readStoredConsent() {
   try {
