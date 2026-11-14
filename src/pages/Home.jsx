@@ -102,7 +102,7 @@ export default function Home() {
             >
               {t.about.titleLine1}{" "}
               <span style={{
-                background: "linear-gradient(90deg, #7ab8a0, #3dd699)",
+                background: "linear-gradient(120deg, #b83a52 0%, #8e2436 45%, #3f4e70 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
