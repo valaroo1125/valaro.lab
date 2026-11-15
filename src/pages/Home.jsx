@@ -15,16 +15,16 @@ export default function Home() {
   return (
     <div
       className="w-full"
-      style={{ background: "#050505", minHeight: "100vh" }}
-    >
+      style={{ background: "#050505", minHeight: "100vh" }}>
+      
       <Navbar />
 
       {/* ── HERO SECTION ── */}
       <section
         className="relative w-full min-h-[70vh] flex flex-col items-center justify-center overflow-hidden"
         style={{ background: "#050505" }}
-        aria-label="Hero"
-      >
+        aria-label="Hero">
+        
         {/* Hero content — centered */}
         <div className="relative z-30 flex flex-col items-center text-center px-6 max-w-3xl mx-auto">
           <h1
@@ -33,9 +33,9 @@ export default function Home() {
               fontFamily: "'Inter', sans-serif",
               fontSize: "clamp(5rem, 14vw, 11rem)",
               letterSpacing: "-0.02em",
-              fontWeight: 900,
-            }}
-          >
+              fontWeight: 900
+            }}>
+            
             {t.hero.title}
           </h1>
 
@@ -45,17 +45,17 @@ export default function Home() {
               fontFamily: "'Inter', sans-serif",
               fontSize: "clamp(1rem, 1.5vw, 1.125rem)",
               fontWeight: 700,
-              maxWidth: "520px",
-            }}
-          >
+              maxWidth: "520px"
+            }}>
+            
             {t.hero.subtitle}
           </p>
 
           <button
             onClick={scrollToServices}
             className="border border-white/70 text-white px-10 py-3.5 text-[15px] font-medium hover:bg-white hover:text-black transition-all duration-300 focus:outline-2 focus:outline-white focus:outline-offset-4"
-            style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.01em" }}
-          >
+            style={{ fontFamily: "'Inter', sans-serif", letterSpacing: "0.01em" }}>
+            
             {t.hero.cta}
           </button>
         </div>
@@ -64,8 +64,8 @@ export default function Home() {
         <button
           onClick={scrollToServices}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 text-white/30 hover:text-white/60 transition-colors duration-300 focus:outline-2 focus:outline-white focus:outline-offset-4"
-          aria-label="Scroll to services"
-        >
+          aria-label="Scroll to services">
+          
           <ChevronDown size={22} />
         </button>
       </section>
@@ -75,8 +75,8 @@ export default function Home() {
         id="services-section"
         className="w-full"
         style={{ background: "#050505" }}
-        aria-label="Services"
-      >
+        aria-label="Services">
+        
         <ServiceGrid />
       </section>
 
@@ -85,27 +85,27 @@ export default function Home() {
         id="about-section"
         className="w-full px-6 md:px-12 py-24 md:py-36"
         style={{ background: "#050505" }}
-        aria-label="About"
-      >
+        aria-label="About">
+        
         <div className="flex flex-col md:flex-row items-center justify-between gap-14 md:gap-8 w-full">
           {/* Left: text */}
           <div className="flex-1">
             <h2
-              className="font-black leading-tight mb-10 text-center md:text-left"
+              className="about-heading font-black leading-tight mb-10 text-center md:text-left text-4xl"
               style={{
                 fontFamily: "'Inter', sans-serif",
                 fontSize: "clamp(2.5rem, 5vw, 4rem)",
                 fontWeight: 900,
                 color: "#ffffff",
-                letterSpacing: "-0.02em",
-              }}
-            >
+                letterSpacing: "-0.02em"
+              }}>
+              
               {t.about.titleLine1}{" "}
               <span style={{
                 background: "linear-gradient(120deg, #b83a52 0%, #8e2436 45%, #3f4e70 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
+                backgroundClip: "text"
               }}>
                 {t.about.titleHighlight1} {t.about.titleLine2} {t.about.titleHighlight2}
               </span>
@@ -115,9 +115,9 @@ export default function Home() {
               style={{
                 fontFamily: "'Inter', sans-serif",
                 fontSize: "0.95rem",
-                color: "rgba(255,255,255,0.6)",
-              }}
-            >
+                color: "rgba(255,255,255,0.6)"
+              }}>
+              
               {t.about.p1a}{" "}
               <strong style={{ color: "rgba(255,255,255,0.9)", fontWeight: 700 }}>
                 {t.about.p1Bold}
@@ -130,13 +130,13 @@ export default function Home() {
             <img
               src="https://media.base44.com/images/public/6a341209f510fd74c1fecf1f/e9ba15391_f915acfb8_Image.jpg"
               alt="About Valaro"
-              className="w-full object-cover max-h-[420px] md:max-h-[840px]"
-            />
+              className="w-full object-cover max-h-[420px] md:max-h-[840px]" />
+            
           </div>
         </div>
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>);
+
 }
