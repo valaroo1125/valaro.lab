@@ -31,9 +31,9 @@
     --chart-4: 0 0% 30%;
     --chart-5: 0 0% 15%;
     --radius: 0rem;
-    --font-heading: 'Inter', ui-sans-serif, system-ui, sans-serif;
-    --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
-    --font-display: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-heading: 'Arial Nova', Arial, Helvetica, sans-serif;
+    --font-body: 'Arial Nova', Arial, Helvetica, sans-serif;
+    --font-display: 'Arial Nova', Arial, Helvetica, sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --sidebar-background: 0 0% 2%;
     --sidebar-foreground: 0 0% 100%;
@@ -90,7 +90,28 @@
 
   html, body {
     background-color: #050505;
+    font-weight: 700;
     @apply bg-background text-foreground font-body;
+  }
+
+  /* Site-wide typeface: Arial Nova Bold (falls back to Arial where not installed) */
+  body * {
+    font-family: 'Arial Nova', Arial, Helvetica, sans-serif !important;
+  }
+
+  /* Navbar keeps its original typeface */
+  nav,
+  nav *,
+  [data-navbar],
+  [data-navbar] * {
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif !important;
+  }
+
+  /* Display headings keep the original typeface */
+  h1,
+  h2,
+  h3 {
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif !important;
   }
 
   /* Custom select option styling */
@@ -98,4 +119,23 @@
     background: #111111;
     color: #ffffff;
   }
+}
+
+@keyframes cardDrift {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+/* Horizontal scrollers without a visible scrollbar */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
